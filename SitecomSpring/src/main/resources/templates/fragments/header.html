@@ -1,0 +1,23 @@
+<!-- templates/fragments/header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="cabecalho">
+        <div class="container">
+            <h1>
+                <img class="logo" src="imagens/logo.png" alt="Logo"> Catálogo Tático
+            </h1>
+            <nav>
+                <ul class="menu">
+                    <li><a th:href="@{/home}"><strong>INÍCIO</strong></a></li>
+                    <li><a th:href="@{/municoes}"><strong>MUNIÇÕES</strong></a></li>
+                    <li><a th:href="@{/equipamentos}"><strong>EQUIPAMENTOS</strong></a></li>
+                    <li><a th:href="@{/acessorios}"><strong>ACESSÓRIOS</strong></a></li>
+                    <li><a th:href="@{/tiroesportivo}"><strong>TIRO ESPORTIVO</strong></a></li>
+                    <li><a th:href="@{/carabinas}"><strong>CARABINAS</strong></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo Bélico</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  
+
+<div th:replace="fragments/header :: cabecalho"></div>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Produtos de alta performance</h2>
+      <p>Explore nossa seleção de equipamentos táticos, munições e acessórios de qualidade superior.</p>
+    </div>
+  </section>
+
+  <section class="produtos container">
+    <h2>Produtos em destaque</h2>
+    <div class="grid-produtos">
+    
+      <div class="card">
+        <img class= "muniçõesINICIO" src="imagens/munições.jpg" alt="Produto 1">
+        <h3>Munições</h3>
+        <p>Alta precisão e confiabilidade para uso profissional.</p>
+        <a th:href="@{/municoes}"><button>Detalhes</button></a>
+      </div>
+
+      <div class="card">
+        <img class= "equipamentoINICIO" src="imagens/equipamentos.png" alt="Produto 2">
+        <h3>Equipamento</h3>
+        <p>Design moderno, leve e eficaz para defesa pessoal.</p>
+        <a th:href="@{/equipamentos}"><button>Detalhes</button></a>
+      </div>
+      
+      <div class="card">
+        <img class= "carabinaINICIO" src="imagens/carabinas.png" alt="Produto 3">
+        <h3>Carabina de Pressão</h3>
+        <p>Ideal para prática esportiva e treinamento de precisão.</p>
+        <a th:href="@{/carabinas}"><button>Detalhes</button></a>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>
+  
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Catálogo Bélico. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+

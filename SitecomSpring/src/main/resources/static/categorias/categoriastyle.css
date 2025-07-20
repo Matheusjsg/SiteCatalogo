@@ -1,0 +1,164 @@
+body {
+  background-color: #1a1a1a;
+  color: #ebe4e4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, p {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000;
+  text-align: left;
+}
+
+ul {
+  margin-left: 35px;
+  text-align: left;
+}
+
+/* Container Centralizado */
+.containers {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.containers button {
+  background-color: #ca1800ad; /* Verde */
+  color: rgb(17, 16, 16);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.product-info .buy-button {
+  background-color: #ca1800ad; /* Vermelho */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+
+.containers img {
+  width: 280px;
+  height: auto;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+/* Carrossel */
+.carousel {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.carousel input {
+  display: none;
+}
+
+.slides {
+  display: flex;
+  width: 100%; /* 4 imagens */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+/* Navegação de Slides */
+#slide1:checked ~ .slides {
+  transform: translateX(0%);
+}
+#slide2:checked ~ .slides {
+  transform: translateX(-100%);
+}
+#slide3:checked ~ .slides {
+  transform: translateX(-200%);
+}
+#slide4:checked ~ .slides {
+  transform: translateX(-300%);
+}
+
+/* Navegação (bolinhas) */
+.navigation {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navigation label {
+  width: 12px;
+  height: 12px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Bolinha ativa */
+#slide1:checked ~ .navigation label:nth-child(1),
+#slide2:checked ~ .navigation label:nth-child(2),
+#slide3:checked ~ .navigation label:nth-child(3),
+#slide4:checked ~ .navigation label:nth-child(4) {
+  background: #333;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .containers img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .carousel {
+    max-width: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .navigation label {
+    width: 10px;
+    height: 10px;
+  }
+}
