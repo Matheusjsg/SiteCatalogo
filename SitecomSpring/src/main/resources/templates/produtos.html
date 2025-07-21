@@ -46,17 +46,15 @@
 
   <div th:replace="fragments/header :: cabecalho"></div>  
 
-   <label for="categoria">Filtrar por categoria:</label>
-<select id="categoria" onchange="window.location.href='/produtos/categoria/' + this.value">
-    <option value="" disabled selected>Selecione uma categoria</option>
-    <option th:each="categoria : ${categorias}"
-            th:value="${categoria.nome}"
-            th:text="${categoria.nome}">
-    </option>
-</select>
+  <section class="produtos container">
 
-    <div th:if="${produtos != null}">
-        <h2 th:text="'Produtos da categoria: ' + ${categoria}">Todos os Produtos</h2>
+<section class="hero">
+
+ <h2>Produtos da Gategoria:</h2>
+
+</section>
+    <div class="grid-produtos" th:if="${produtos != null}">
+        
         <div th:each="produto : ${produtos}" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
             <h3 th:text="${produto.nome}">Nome do Produto</h3>
             <p th:text="${produto.descricao}">Descrição</p>
@@ -66,6 +64,18 @@
         </div>
     </div>
 
-    <a href="/produtos/novo">Adicionar novo produto</a>
+   </section>
+
 </body>
 </html>
+
+
+
+
+
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Catálogo Bélico. Todos os direitos reservados.</p>
+    </div>
+  </footer>
