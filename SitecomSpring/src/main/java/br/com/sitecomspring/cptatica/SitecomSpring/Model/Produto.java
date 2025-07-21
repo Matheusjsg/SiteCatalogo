@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "produtos")
 public class Produto {
@@ -18,17 +19,20 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private long id;
-    @Column(name = "nome do produto")
+    @Column(name = "nome")
     private String nome;
-    @Column(name = "descricao do produto")
+
+    @Column(name = "descricao", columnDefinition = "TEXT")
     private String descricao;
-    @Column(name = "preco do produto")
+
+    @Column(name = "preco")
     private double preco;
 
     private String imagemurl;
+    
     @ManyToOne
     @JoinColumn(name = "categoria")
-    private Categoria categoria;
+        private Categoria categoria;
 
     // Construtor
     public Produto(String nome, String descricao, double preco, String imagemurl, Categoria categoria) {

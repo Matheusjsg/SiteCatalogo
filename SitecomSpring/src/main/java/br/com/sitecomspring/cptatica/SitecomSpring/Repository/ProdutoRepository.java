@@ -7,5 +7,5 @@ import br.com.sitecomspring.cptatica.SitecomSpring.Model.Produto;
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     
 
-    List<Produto> findByCategoriaIgnoreCase(String categoria);
+    List<Produto> findByCategoria_NomeIgnoreCase(String name);
 }

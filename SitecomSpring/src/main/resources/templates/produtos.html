@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+
+    <meta charset="UTF-8">
+    <title>Novo Produto</title>
+    <!-- Opcional -->
+    <style>
+
+        body {
+            font-family: Arial, sans-serif, ;
+            padding: 30px;
+            background-color: #f3f3f3;
+            justify-content: center;
+        
+        }
+        form {
+            max-width: 500px;
+            background: rgb(24, 18, 18);
+            padding: 20px;
+            border-radius: 10px;
+            justify-content: center;
+        }
+        label, input, textarea, select {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #004d99;
+        }
+    </style>
+</head>
+
+<body>
+
+  <div th:replace="fragments/header :: cabecalho"></div>  
+
+   <label for="categoria">Filtrar por categoria:</label>
+<select id="categoria" onchange="window.location.href='/produtos/categoria/' + this.value">
+    <option value="" disabled selected>Selecione uma categoria</option>
+    <option th:each="categoria : ${categorias}"
+            th:value="${categoria.nome}"
+            th:text="${categoria.nome}">
+    </option>
+</select>
+
+    <div th:if="${produtos != null}">
+        <h2 th:text="'Produtos da categoria: ' + ${categoria}">Todos os Produtos</h2>
+        <div th:each="produto : ${produtos}" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+            <h3 th:text="${produto.nome}">Nome do Produto</h3>
+            <p th:text="${produto.descricao}">Descrição</p>
+            <p>Preço: R$ <span th:text="${produto.preco}">0.00</span></p>
+            <p>Categoria: <span th:text="${produto.categoria.nome}">Categoria</span></p>
+            <img th:src="@{${produto.imagemurl}}" alt="Imagem do produto" style="width: 150px;">
+        </div>
+    </div>
+
+    <a href="/produtos/novo">Adicionar novo produto</a>
+</body>
+</html>
