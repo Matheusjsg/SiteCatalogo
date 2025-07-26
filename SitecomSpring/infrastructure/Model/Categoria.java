@@ -1,4 +1,4 @@
-package br.com.sitecomspring.cptatica.SitecomSpring.Model;
+package br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model;
 
 import java.util.List;
 

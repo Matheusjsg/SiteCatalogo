@@ -6,14 +6,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import br.com.sitecomspring.cptatica.SitecomSpring.Model.Produto;
-import br.com.sitecomspring.cptatica.SitecomSpring.Repository.CategoriaRepository;
-import br.com.sitecomspring.cptatica.SitecomSpring.Repository.ProdutoRepository;
+
+import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model.Produto;
+import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.CategoriaRepository;
+import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.ProdutoRepository;
+
 import org.springframework.ui.Model;
 
 
+
+
+
 @Controller
-@RequestMapping("/produtos")
+@RequestMapping("/")
 public class ProdutoController {
 
     @Autowired
@@ -29,14 +34,12 @@ public class ProdutoController {
     
 
     @GetMapping
-    public String listarProdutos(Model model) {
-        model.addAttribute("categorias", categoriaRepository.findAll());
-        model.addAttribute("produtos", produtoRepository.findAll());
-        return "produtos";
+    public String paginainicial (Model model){
+        return "index";
     }
+    
 
-
-@GetMapping("/categoria/{nome}")
+@GetMapping("categoria/{nome}")
 public String listarPorCategoria(@PathVariable String nome, Model model) {
     List<Produto> produtos = produtoRepository.findByCategoria_NomeIgnoreCase(nome);
     model.addAttribute("produtos", produtos);
@@ -45,8 +48,25 @@ public String listarPorCategoria(@PathVariable String nome, Model model) {
     model.addAttribute("categoriaSelecionada", nome);
 
     return "produtos";
+    }
+
+@GetMapping("categoria/{categoria}/{slug}")
+        
+  public String ExibirProdutosCategoria(@PathVariable String categoria,
+                                        @PathVariable String slug,
+                                        Model model) {
+
+    Produto produto = produtoRepository.findBySlugAndCategoria_NomeIgnoreCase(slug, categoria);
+    if (produto == null) {
+        throw new RuntimeException("Produto não encontrado");
+    }
+
+    model.addAttribute("produto", produto);
+    return "produto";
+
 }
 
 
-   }
+    }
+
 

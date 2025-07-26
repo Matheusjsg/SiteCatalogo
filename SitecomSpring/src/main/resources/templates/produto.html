@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title th:text="${produto.nome}">Catálogo Bélico</title>
+  <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+
+<body>
+
+  <div th:replace="fragments/header :: cabecalho"></div>  
+
+  <section class="produto-detalhe container">
+    <div class="card">
+      <h1 th:text="${produto.nome}">Nome do Produto</h1>
+      <img th:src="@{${produto.imagemurl}}" alt="Imagem do produto" style="width: 300px;" />
+      <p th:text="${produto.descricao}">Descrição do produto</p>
+           <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
+      
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Catálogo Bélico. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

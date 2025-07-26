@@ -1,70 +1,36 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
- 
+<html lang="pt-BR">
 <head>
-
-    <meta charset="UTF-8">
-    <title>Novo Produto</title>
-    <!-- Opcional -->
-    <style>
-
-        body {
-            font-family: Arial, sans-serif, ;
-            padding: 30px;
-            background-color: #f3f3f3;
-            justify-content: center;
-        
-        }
-        form {
-            max-width: 500px;
-            background: rgb(24, 18, 18);
-            padding: 20px;
-            border-radius: 10px;
-            justify-content: center;
-        }
-        label, input, textarea, select {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background: #0066cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #004d99;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo Bélico</title>
+  <link rel="stylesheet" href="@{/style.css}"/>
 </head>
 
 <body>
 
-  <div th:replace="fragments/header :: cabecalho"></div>  
+<div th:replace="fragments/header :: cabecalho"></div>  
 
-  <section class="produtos container">
 
-<section class="hero">
 
- <h2>Produtos da Gategoria:</h2>
+<section class="hero"> <h2>Produtos da Gategoria:</h2> </section>
 
-</section>
-    <div class="grid-produtos" th:if="${produtos != null}">
-        
-        <div th:each="produto : ${produtos}" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+<section class="produtos container">
+   
+    <div class="card" th:if="${produtos != null}">
+            <div th:each="produto : ${produtos}" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
             <h3 th:text="${produto.nome}">Nome do Produto</h3>
-            <p th:text="${produto.descricao}">Descrição</p>
+            <p th:text="${produto.descricaolink}">Descrição do Link</p>
             <p>Preço: R$ <span th:text="${produto.preco}">0.00</span></p>
             <p>Categoria: <span th:text="${produto.categoria.nome}">Categoria</span></p>
             <img th:src="@{${produto.imagemurl}}" alt="Imagem do produto" style="width: 150px;">
-        </div>
+            <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}">
+            <h2 th:text="${produto.nome}"></h2>
+</a>
+            </div>
     </div>
 
-   </section>
+</section>
 
 </body>
 </html>

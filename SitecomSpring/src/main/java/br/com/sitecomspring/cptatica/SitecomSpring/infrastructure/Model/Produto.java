@@ -1,4 +1,4 @@
-package br.com.sitecomspring.cptatica.SitecomSpring.Model;
+package br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,32 +19,37 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private long id;
-    @Column(name = "nome")
+    @Column(name = "nome", unique = true)
     private String nome;
 
-    @Column(name = "descricao", columnDefinition = "TEXT")
-    private String descricao;
+    @Column(name= "descricaolink")
+    private String descricaolink;
+
+    @Column(name = "descricaoCompleta", columnDefinition = "TEXT")
+    private String descricaoCompleta;
 
     @Column(name = "preco")
     private double preco;
 
     private String imagemurl;
+    private String slug;
     
     @ManyToOne
     @JoinColumn(name = "categoria")
         private Categoria categoria;
 
     // Construtor
-    public Produto(String nome, String descricao, double preco, String imagemurl, Categoria categoria) {
+    public Produto(String nome, String descricaolink, String descricaoCompleta, double preco, String imagemurl, Categoria categoria) {
         this.nome = nome;
-        this.descricao = descricao;
+        this.descricaolink = descricaolink;
+        this.descricaoCompleta = descricaoCompleta;
         this.preco = preco;
         this.categoria = categoria;
         this.imagemurl = imagemurl;
-        
+
     }
-    public Produto() {
-    }
+
+    public Produto() {}
 
     // Getters e Setters
     public long getId() {
@@ -58,12 +63,20 @@ public class Produto {
         this.nome = nome;
     }
 
+      public String getDescricaolink() {
+        return descricaolink;
+    }
+
+    public void setDescricaolink(String descricaolink) {
+        this.descricaoCompleta = descricaolink;
+    }
+
     public String getDescricao() {
-        return descricao;
+        return descricaoCompleta;
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricaoCompleta = descricao;
     }
 
     public double getPreco() {
@@ -88,5 +101,13 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

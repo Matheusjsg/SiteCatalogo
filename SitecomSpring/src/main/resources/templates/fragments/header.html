@@ -1,6 +1,7 @@
-<div th:fragment="cabecalho">
-<link rel="stylesheet" th:href="@{/style.css}">
 
+
+<div th:fragment="cabecalho">
+  <link rel="stylesheet" th:href="@{/style.css}">
   <body>
        <header>
         <div class="container">
@@ -9,12 +10,12 @@
             </h1>
             <nav>
                 <ul class="menu">
-                    <li><a th:href="@{/home}"><strong>INÍCIO</strong></a></li>
-                    <li><a th:href="@{/produtos/categoria/munições}"><strong>MUNIÇÕES</strong></a></li>
-                    <li><a th:href="@{/produtos/categoria/equipamentos}"><strong>EQUIPAMENTOS</strong></a></li>
-                    <li><a th:href="@{/produtos/categoria/acessórios}"><strong>ACESSÓRIOS</strong></a></li>
-                    <li><a th:href="@{/produtos/categoria/tiroesportivo}"><strong>TIRO ESPORTIVO</strong></a></li>
-                    <li><a th:href="@{/produtos/categoria/carabinas}"><strong>CARABINAS</strong></a></li>
+                    <li><a th:href="@{/}"><strong>INÍCIO</strong></a></li>
+                    <li><a th:href="@{/categoria/munições}"><strong>MUNIÇÕES</strong></a></li>
+                    <li><a th:href="@{/categoria/equipamentos}"><strong>EQUIPAMENTOS</strong></a></li>
+                    <li><a th:href="@{/categoria/acessórios}"><strong>ACESSÓRIOS</strong></a></li>
+                    <li><a th:href="@{/categoria/tiroesportivo}"><strong>TIRO ESPORTIVO</strong></a></li>
+                    <li><a th:href="@{/categoria/carabinas}"><strong>CARABINAS</strong></a></li>
                 </ul>
             </nav>
         </div>

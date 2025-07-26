@@ -169,6 +169,42 @@ nav a:hover {
   background-color: #a00000;
 }
 
+
+
+/* Página individual do produto */
+.produto-detalhe .card {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.produto-detalhe img {
+    width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.produto-detalhe h1 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.produto-detalhe p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.produto-detalhe .preco {
+    font-size: 1.5rem;
+    color: #00e676;
+    font-weight: bold;
+}
+
+
+
 /* Rodapé */
 footer {
   background-color: #1e1e1e;
