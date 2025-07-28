@@ -14,7 +14,10 @@
   <section class="produto-detalhe container">
     <div class="card">
       <h1 th:text="${produto.nome}">Nome do Produto</h1>
-      <img th:src="@{${produto.imagemurl}}" alt="Imagem do produto" style="width: 300px;" />
+     
+   <div th:each="img : ${produto.imagens}">
+    <img th:src="@{'/uploads/' + ${img.nomeArquivo}}" alt="Imagem do produto" width="150"/>
+</div>
       <p th:text="${produto.descricao}">Descrição do produto</p>
            <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
       

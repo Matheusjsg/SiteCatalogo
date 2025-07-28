@@ -1,5 +1,10 @@
 package br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
 
 
 @Entity
@@ -31,7 +38,9 @@ public class Produto {
     @Column(name = "preco")
     private double preco;
 
-    private String imagemurl;
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImagemProduto> imagens = new ArrayList<>();
+
     private String slug;
     
     @ManyToOne
@@ -39,14 +48,13 @@ public class Produto {
         private Categoria categoria;
 
     // Construtor
-    public Produto(String nome, String descricaolink, String descricaoCompleta, double preco, String imagemurl, Categoria categoria) {
+    public Produto(String nome, String descricaolink, String descricaoCompleta, double preco, Categoria categoria) {
         this.nome = nome;
         this.descricaolink = descricaolink;
         this.descricaoCompleta = descricaoCompleta;
         this.preco = preco;
         this.categoria = categoria;
-        this.imagemurl = imagemurl;
-
+        
     }
 
     public Produto() {}
@@ -87,13 +95,7 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getImagemurl() {
-        return imagemurl;
-    }
-
-    public void setImagemurl(String imagemurl) {
-        this.imagemurl = imagemurl;
-    }
+  
 
     public Categoria getCategoria() {
         return categoria;
@@ -110,4 +112,13 @@ public class Produto {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+    public List<ImagemProduto> getImagens() { 
+        return imagens; 
+}
+    public void setImagens(List<ImagemProduto> imagens) { 
+        this.imagens = imagens; 
+    }
+
+
 }
