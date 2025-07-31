@@ -40,9 +40,17 @@ public ImagemProduto(String nomeArquivo, Produto produto) {
     // Getters e Setters
     public Long getId() { return id; }
 
-    public String getNomeArquivo() { return nomeArquivo; }
-    public void setNomeArquivo(String nomeArquivo) { this.nomeArquivo = nomeArquivo; }
+    public String getNomeArquivo() { 
+        return nomeArquivo; 
+    }
+    public void setNomeArquivo(String nomeArquivo) {
+         this.nomeArquivo = nomeArquivo; 
+        }
 
-    public Produto getProduto() { return produto; }
-    public void setProduto(Produto produto) { this.produto = produto; }
+    public Produto getProduto() { 
+        return produto; 
+    }
+    public void setProduto(Produto produto) {
+         this.produto = produto; 
+        }
 }
