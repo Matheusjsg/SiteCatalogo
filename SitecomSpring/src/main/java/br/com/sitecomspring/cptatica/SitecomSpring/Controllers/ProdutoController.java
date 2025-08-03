@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model.Produto;
 import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.CategoriaRepository;
 import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.ProdutoRepository;
@@ -68,5 +67,7 @@ public String listarPorCategoria(@PathVariable String nome, Model model) {
 
 
     }
+
+
 
 

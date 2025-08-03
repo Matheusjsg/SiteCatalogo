@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SitecomSpringApplication<SitecomSpring>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.sitecomspring.cptatica.SitecomSpring.SitecomSpringApplication",
+            "projectName": "SitecomSpring",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

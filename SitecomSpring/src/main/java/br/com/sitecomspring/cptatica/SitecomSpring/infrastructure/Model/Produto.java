@@ -79,11 +79,11 @@ public class Produto {
         this.descricaoCompleta = descricaolink;
     }
 
-    public String getDescricao() {
+    public String getDescricaoCompleta() {
         return descricaoCompleta;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricaoCompleta(String descricao) {
         this.descricaoCompleta = descricao;
     }
 

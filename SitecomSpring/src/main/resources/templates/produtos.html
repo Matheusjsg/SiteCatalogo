@@ -15,43 +15,57 @@
 
 <div th:replace="fragments/header :: cabecalho"></div>  
 
-<section class="hero"> 
-  <h2>Produtos da Gategoria:</h2> 
-</section>
+      <section class="hero"> 
+      
+          <h1>Catálogo Bélico</h1>
+          <p>Explore nossos produtos de alta qualidade.</p>
+       
+      </section>
 
 <section class="produtos container">
-  <div class="grid-produtos"> 
-    <div class="card" th:each="produto : ${produtos}" th:if="${produtos != null}">
-      
-      <!-- Carrossel de imagens -->
-      <div th:if="${produto.imagens != null and #lists.size(produto.imagens) > 0}">
-        <div th:id="'carouselProduto_' + ${produto.id}" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div th:each="img, iterStat : ${produto.imagens}"
-                 th:class="'carousel-item' + (${iterStat.index == 0} ? ' active' : '')">
-              <img th:src="@{'/uploads/' + ${img.nomeArquivo}}" class="d-block w-100" alt="Imagem do produto" style="max-height: 300x; object-fit: contain;">
-            </div>
-          </div>
 
-          <!-- Botões de navegação -->
-          <button class="carousel-control-prev" type="button"
-                  th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button"
-                  th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
+     <div class="grid-produtos"> 
+
+      <div class="card" th:each="produto : ${produtos}" th:if="${produtos != null}">
+
+            <!-- Carrossel de imagens -->
+            <div th:if="${produto.imagens != null and #lists.size(produto.imagens) > 0}">
+              <div th:id="'carouselProduto_' + ${produto.id}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div th:each="img, iterStat : ${produto.imagens}"
+                      th:class="'carousel-item' + (${iterStat.index == 0} ? ' active' : '')">
+                    <img th:src="@{'/uploads/' + ${img.nomeArquivo}}" class="d-block w-100" alt="Imagem do produto" style="max-height: 300x; object-fit: contain;">
+                  </div>
+                </div>
+
+                  <!-- Botões de navegação -->
+                  <button class="carousel-control-prev" type="button"
+                          th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button"
+                          th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+              </div>
+
+            <!-- Informações do produto -->
+            <h5 th:text="${produto.nome}"></h5>
+
+            <p style="font-size: 1rem; text-align: center; white-space: pre-wrap;" 
+            th:utext="${#strings.replace(produto.descricaolink, '\n', '<br/>')}"></p>
+           
+           
+            
+        <div class="button-cards">
+            <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}"> 
+              <button style="background-color: rgb(150, 5, 5);"><strong>Ver detalhes</strong></button></a>
+            
+            <a href="https://api.whatsapp.com/send?phone=5571992471530&text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20Saco%20de%20Tiro%20Duplo%20Aurok">
+              <button style="background-color: rgba(43, 241, 43, 0.493);"> <strong>R$ <span th:text= "${produto.preco}" >00.000</span> - Comprar 🛒</strong> </button></a>
         </div>
-      </div>
-
-      <!-- Informações do produto -->
-      <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}">
-        <h3 th:text="${produto.nome}"></h3>
-      </a>
-      <p th:text="${produto.descricaolink}">Descrição do Link</p>
-      <p>Preço: R$ <span th:text="${produto.preco}">0.00</span></p>
-      <p>Categoria: <span th:text="${produto.categoria.nome}">Categoria</span></p>
+     
     </div>
   </div>
 </section>
@@ -64,6 +78,6 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Catálogo Bélico. Todos os direitos reservados.</p>
+      <p>&copy; 2025 CP Tática. Todos os direitos reservados.</p>
     </div>
   </footer>

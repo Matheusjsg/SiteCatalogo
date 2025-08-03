@@ -4,31 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title th:text="${produto.nome}">Catálogo Bélico</title>
-  <link rel="stylesheet" th:href="@{/style.css}"/>
+
+  <link rel="stylesheet" th:href="@{/Styleproduto.css}"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
 </head>
 
 <body>
 
   <div th:replace="fragments/header :: cabecalho"></div>  
 
-  <section class="produto-detalhe container">
-    <div class="card">
-      <h1 th:text="${produto.nome}">Nome do Produto</h1>
-     
-   <div th:each="img : ${produto.imagens}">
-    <img th:src="@{'/uploads/' + ${img.nomeArquivo}}" alt="Imagem do produto" width="150"/>
-  </div>
-      <p th:text="${produto.descricao}">Descrição do produto</p>
-           <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
-      
-    </div>
-  </section>
+ 
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Catálogo Bélico. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+<section class="container">
+      
+  <section class="hero"> 
+  <!-- Mostra a categoria usando o produto principal -->
+  <h1 th:text="${produto.categoria.nome}">Categoria</h1>
+</section>
+
+      <div th:if="${produto.imagens != null and #lists.size(produto.imagens) > 0}">
+        <div th:id="'carouselProduto_' + ${produto.id}" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div th:each="img, iterStat : ${produto.imagens}"
+                 th:class="'carousel-item' + (${iterStat.index == 0} ? ' active' : '')">
+              <img th:src="@{'/uploads/' + ${img.nomeArquivo}}" class="d-block mx-auto" alt="Imagem do produto">
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button"
+                  th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button"
+                  th:attr="data-bs-target='#carouselProduto_' + ${produto.id}" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <h1 th:text="${produto.nome}"><strong>Nome do Produto</strong></h1>
+
+     <p style="font-size: 1.1rem; text-align: left; white-space: pre-wrap;" 
+      th:utext="${#strings.replace(produto.descricaoCompleta, '\n', '<br/>')}"></p>
+      <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
+   
+ 
+
 
 </body>
-</html>
+</html> 
+
+   <footer>
+    <div class="container">
+      <p>&copy; 2025 CP Tática. Todos os direitos reservados.</p>
+    </div>
+  </footer>
