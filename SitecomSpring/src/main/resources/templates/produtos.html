@@ -15,12 +15,35 @@
 
 <div th:replace="fragments/header :: cabecalho"></div>  
 
-      <section class="hero"> 
       
-          <h1>Catálogo Bélico</h1>
-          <p>Explore nossos produtos de alta qualidade.</p>
-       
-      </section>
+<section class="hero">
+  
+  <div th:if="${categoria != null and categoria.equalsIgnoreCase('munições')}">
+    <h1>Catálogo de Munições</h1>
+    <p>Nossas vendas são realizadas presencialmente de acordo com as normas e regulamentações vigentes, mediante apresentação de documentos legais.</p>
+  </div>
+
+  <div th:if="${categoria != null and categoria.equalsIgnoreCase('equipamentos')}">
+    <h1>Catálogo de Equipamentos Bélico</h1>
+    <p>Explore nossos produtos de alta qualidade.</p>
+  </div>
+
+  <div th:if="${categoria != null and categoria.equalsIgnoreCase('tiroesportivo')}">
+    <h1>Catálogo de Tiro Esportivo</h1>
+    <p>Explore nossa linha completa de armamentos para tiro esportivo.</p>
+  </div>
+
+  <div th:if="${categoria != null and categoria.equalsIgnoreCase('carabinas')}">
+      <h1>Catálogo de Carabinas - Airsoft - Airgun</h1>
+      <p>Pra quem busca conciliar diversão e treinamento.</p>
+  </div>
+
+  <div th:if="${categoria != null and categoria.equalsIgnoreCase('acessórios')}">
+    <h1>Catálogo de Acessórios</h1>
+    <p>Explore nossa linha completa de acessórios para armamentos.</p>
+  </div>
+
+</section>
 
 <section class="produtos container">
 
