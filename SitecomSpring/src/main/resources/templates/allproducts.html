@@ -20,29 +20,11 @@
 
   <!-- Exibe o título do catálogo com base na categoria selecionada -->
 
-  <div th:if="${categoria != null and categoria.equalsIgnoreCase('munições')}">
-    <h1>Catálogo de Munições</h1>
-    <p>Nossas vendas são realizadas presencialmente de acordo com as normas e regulamentações vigentes, mediante apresentação de documentos legais.</p>
-  </div>
+  
 
-  <div th:if="${categoria != null and categoria.equalsIgnoreCase('equipamentos')}">
-    <h1>Catálogo de Equipamentos Bélico</h1>
-    <p>Explore nossos produtos de alta qualidade.</p>
-  </div>
-
-  <div th:if="${categoria != null and categoria.equalsIgnoreCase('tiroesportivo')}">
-    <h1>Catálogo de Tiro Esportivo</h1>
-    <p>Explore nossa linha completa de armamentos para tiro esportivo.</p>
-  </div>
-
-  <div th:if="${categoria != null and categoria.equalsIgnoreCase('carabinas')}">
-      <h1>Catálogo de Carabinas - Airsoft - Airgun</h1>
-      <p>Pra quem busca conciliar diversão e treinamento.</p>
-  </div>
-
-  <div th:if="${categoria != null and categoria.equalsIgnoreCase('acessórios')}">
-    <h1>Catálogo de Acessórios</h1>
-    <p>Explore nossa linha completa de acessórios para armamentos.</p>
+  <div >
+    <h1>Painel de Controle dos Produtos</h1>
+    
   </div>
 
 </section>
@@ -81,14 +63,22 @@
             <p style="font-size: 1rem; text-align: center; white-space: pre-wrap;" 
             th:utext="${#strings.replace(produto.descricaolink, '\n', '<br/>')}"></p>
            
-           
+         
+    Editar </a>
+
+
             
         <div class="button-cards">
             <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}"> 
               <button style="background-color: rgb(150, 5, 5);"><strong>Ver detalhes</strong></button></a>
+              
             
-            <a href="https://api.whatsapp.com/send?phone=5571992471530&text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20Saco%20de%20Tiro%20Duplo%20Aurok">
-              <button style="background-color: rgba(43, 241, 43, 0.493);"> <strong>R$ <span th:text= "${produto.preco}" >00.000</span> - Comprar 🛒</strong> </button></a>
+            <a th:href="@{/cptadmin/editar/{id}(id=${produto.id})}" class="button-cards">
+              <button style="background-color: rgba(43, 241, 43, 0.493);"> Editar </button></a>
+
+
+              <a th:href="@{/cptadmin/excluir/{id}(id=${produto.id})}" class="button-cards">
+              <button style="background-color: rgba(255, 0, 0, 0.493);"> Excluir </button></a>
         </div>
      
     </div>
@@ -97,7 +87,6 @@
 
 </body>
 </html>
-
 
 
 

@@ -16,15 +16,15 @@
 
   <div th:replace="fragments/header :: cabecalho"></div>  
 
- 
+<section class="hero"> 
+  <!-- Mostra a categoria usando o produto principal -->
+  <h1 th:text="${produto.categoria.nome}">Categoria</h1>
+
+</section>
 
 <section class="container">
       
-  <section class="hero"> 
-  <!-- Mostra a categoria usando o produto principal -->
-  <h1 th:text="${produto.categoria.nome}">Categoria</h1>
-  <br>
-</section>
+
 
       <div th:if="${produto.imagens != null and #lists.size(produto.imagens) > 0}">
         <div th:id="'carouselProduto_' + ${produto.id}" class="carousel slide mb-4" data-bs-ride="carousel">

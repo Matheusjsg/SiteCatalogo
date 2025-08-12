@@ -76,7 +76,7 @@ public class Produto {
     }
 
     public void setDescricaolink(String descricaolink) {
-        this.descricaoCompleta = descricaolink;
+        this.descricaolink = descricaolink;
     }
 
     public String getDescricaoCompleta() {
