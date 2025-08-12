@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
  
@@ -8,45 +6,91 @@
     <meta charset="UTF-8">
     <title>Novo Produto</title>
     <!-- Opcional -->
-    <style>
+   
 
-        body {
-            font-family: Arial, sans-serif, ;
-            padding: 30px;
-            background-color: #f3f3f3;
-            justify-content: center;
-        
-        }
-        form {
-            max-width: 500px;
-            background: rgb(24, 18, 18);
-            padding: 20px;
-            border-radius: 10px;
-            justify-content: center;
-        }
-        label, input, textarea, select {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background: #0066cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #004d99;
-        }
-    </style>
 </head>
 
+ <style>
+.form-cadastro {
+    font-family: Arial, sans-serif;
+    background-color: #2e4653c4;
+    margin: 0;
+    height: 80vh; /* altura total da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* centraliza verticalmente */
+    flex-direction: column;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+    background: #181212;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #004d99;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+  
 <body>
 
-  <div th:replace="fragments/header :: cabecalho"></div>  
-  
+ <div th:replace="fragments/header :: cabecalho"></div>  
+ 
+ <div class="form-cadastro">
     <h1>Cadastrar Novo Produto</h1>
 
     <form th:action="@{/cptadmin/salvar}" method="post" enctype="multipart/form-data">
@@ -78,7 +122,9 @@
         <button type="submit">Salvar Produto</button>
     </form>
 
-    <p><a th:href="@{/produtos}">Voltar para lista de produtos</a></p>
+    <p><a th:href="@{/cptadmin}">Voltar para lista de produtos</a></p>
+</div>
+    
 
 </body>
 </html>

@@ -50,8 +50,13 @@
 
      <p style="font-size: 1.1rem; text-align: left; white-space: pre-wrap;" 
       th:utext="${#strings.replace(produto.descricaoCompleta, '\n', '<br/>')}"></p>
-      <p><strong>Preço:</strong> R$ <span th:text="${produto.preco}">0.00</span></p>
-   
+
+  
+  
+        <a href="https://api.whatsapp.com/send?phone=5571992471530&text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20Saco%20de%20Tiro%20Duplo%20Aurok">
+        <button style="background-color: rgba(238, 21, 21, 0.541); border-radius: 15px; margin-bottom: 10px; justify-content: center;  color: white; padding: 10px 20px; "> 
+        <strong>R$ <span th:text= "${produto.preco}" >00.000</span> - Comprar 🛒</strong> </button></a>
+
  
 
 
