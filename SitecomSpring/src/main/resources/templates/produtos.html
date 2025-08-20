@@ -9,11 +9,14 @@
   <!-- Bootstrap CSS e JS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Inclui a biblioteca de ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
 </head>
 
-<body>
-
 <div th:replace="fragments/header :: cabecalho"></div>  
+
+<body>
 
       
 <section class="hero">
@@ -22,27 +25,27 @@
 
   <div th:if="${categoria != null and categoria.equalsIgnoreCase('munições')}">
     <h1>Catálogo de Munições</h1>
-    <p>Nossas vendas são realizadas presencialmente de acordo com as normas e regulamentações vigentes, mediante apresentação de documentos legais.</p>
+    <p style="color: black;">Nossas vendas são realizadas presencialmente de acordo com as normas e regulamentações vigentes, mediante apresentação de documentos legais.</p>
   </div>
 
   <div th:if="${categoria != null and categoria.equalsIgnoreCase('equipamentos')}">
     <h1>Catálogo de Equipamentos Bélico</h1>
-    <p>Explore nossos produtos de alta qualidade.</p>
+    <p style="color: black;">Explore nossos produtos de alta qualidade.</p>
   </div>
 
   <div th:if="${categoria != null and categoria.equalsIgnoreCase('tiroesportivo')}">
     <h1>Catálogo de Tiro Esportivo</h1>
-    <p>Explore nossa linha completa de armamentos para tiro esportivo.</p>
+    <p style="color: black;">Explore nossa linha completa de armamentos para tiro esportivo.</p>
   </div>
 
   <div th:if="${categoria != null and categoria.equalsIgnoreCase('carabinas')}">
       <h1>Catálogo de Carabinas - Airsoft - Airgun</h1>
-      <p>Pra quem busca conciliar diversão e treinamento.</p>
+      <p style="color: black;">Pra quem busca conciliar diversão e treinamento.</p>
   </div>
 
   <div th:if="${categoria != null and categoria.equalsIgnoreCase('acessórios')}">
     <h1>Catálogo de Acessórios</h1>
-    <p>Explore nossa linha completa de acessórios para armamentos.</p>
+    <p style="color: black;" >Explore nossa linha completa de acessórios para armamentos.</p>
   </div>
 
 </section>
@@ -83,21 +86,46 @@
            
            
             
-        <div class="button-cards">
+        <div  class="button-cards">
             <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}"> 
               <button style="background-color: rgba(161, 143, 36, 0.788);"><strong>Ver detalhes</strong></button></a>
-            
-            <a href="https://api.whatsapp.com/send?phone=5571992471530&text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20Saco%20de%20Tiro%20Duplo%20Aurok">
-              <button style="background-color: rgba(240, 11, 11, 0.562);"> <strong>R$ <span th:text= "${produto.preco}" >00.000</span> - Comprar 🛒</strong> </button></a>
+           
+                  <!-- Botão "Adicionar ao Carrinho" com dados do produto -->
+            <button class="btn btn-primary add-to-cart-btn" 
+                    th:attr="data-id=${produto.id}, data-name=${produto.nome}, data-price=${produto.preco}, data-image=@{'/uploads/' + ${#lists.size(produto.imagens) > 0 ? produto.imagens[0].nomeArquivo : 'placeholder.jpg'}}">
+                Adicionar ao Carrinho
+            </button>
         </div>
-     
+
     </div>
   </div>
 </section>
 
+<!-- Nova Seção do Carrinho de Compras -->
+<section id="cart-section" class="cart-section container">
+    <h2 class="h4 text-center mb-4"><i class="fas fa-shopping-cart me-2"></i> Seu Carrinho</h2>
+    <div id="cart-content">
+        <!-- Lista de Itens do Carrinho -->
+        <ul  id="cart-list" class="list-group list-group-flush">
+            <!-- Itens do carrinho serão inseridos aqui pelo JavaScript -->
+        </ul>
+        <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+            <h5 class="mb-0">Total:</h5>
+            <span id="cart-total" class="h3 fw-bold text-primary">R$ 0,00</span>
+        </div>
+        
+        <!-- Botão para enviar mensagem via WhatsApp -->
+        <button id="send-whatsapp-btn" class="btn btn-success w-100 mt-3">
+            <i class="fab fa-whatsapp me-2"></i> Enviar Pedido via WhatsApp
+        </button>
+    </div>
+</section>
+
+
+<script src="/js/cart.js"></script>
+
 </body>
 </html>
-
 
 
 
