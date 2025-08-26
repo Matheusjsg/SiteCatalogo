@@ -80,25 +80,38 @@
 
             <!-- Informações do produto -->
             <h5 th:text="${produto.nome}"></h5>
-
+           
             <p style="font-size: 1rem; text-align: center; white-space: pre-wrap;" 
             th:utext="${#strings.replace(produto.descricaolink, '\n', '<br/>')}"></p>
            
            
-            
-        <div  class="button-cards">
-            <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}"> 
-              <button style="background-color: rgba(161, 143, 36, 0.788);"><strong>Ver detalhes</strong></button></a>
-           
-                  <!-- Botão "Adicionar ao Carrinho" com dados do produto -->
-            <button class="btn btn-primary add-to-cart-btn" 
-                    th:attr="data-id=${produto.id}, data-name=${produto.nome}, data-price=${produto.preco}, data-image=@{'/uploads/' + ${#lists.size(produto.imagens) > 0 ? produto.imagens[0].nomeArquivo : 'placeholder.jpg'}}">
-                Adicionar ao Carrinho
-            </button>
-        </div>
+          <div class="card-actions">
+                <button style="background-color: rgb(0, 0, 255);"  class="btn-action add-to-cart-btn"
+                          th:attr="data-id=${produto.id}, 
+                          data-name=${produto.nome}, 
+                          data-price=${produto.preco}, 
+                          data-image=@{'/uploads/' + ${#lists.size(produto.imagens) > 0 ? produto.imagens[0].nomeArquivo : 'placeholder.jpg'}}">
+                          <span class="currency">R$</span>
+                          <span class="amount" th:text="${produto.preco}"></span> 
+                          | Adicionar ao Carrinho
+                </button>
 
-    </div>
+                <a th:href="@{/categoria/{categoria}/{slug}(categoria=${produto.categoria.nome}, slug=${produto.slug})}">
+                      <button  style="background-color: rgb(48, 73, 73);"  class="btn-action details-btn">
+                      Ver detalhes
+                      </button>
+                </a>
+            </div>
+            
+      
   </div>
+
+   
+   
+   
+            
+
+
 </section>
 
 <!-- Nova Seção do Carrinho de Compras -->
@@ -127,7 +140,7 @@
 </body>
 </html>
 
-
+<br><br><br>
 
   <footer>
     <div class="container">

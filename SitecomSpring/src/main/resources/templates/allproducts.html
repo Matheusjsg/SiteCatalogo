@@ -79,8 +79,8 @@
               <button style="background-color: rgba(43, 241, 43, 0.493);"> Editar </button></a>
 
 
-              <a th:href="@{/cptadmin/excluir/{id}(id=${produto.id})}" class="button-cards">
-              <button style="background-color: rgba(255, 0, 0, 0.493);"> Excluir </button></a>
+              <a th:href="@{/cptadmin/excluir/{id}(id=${produto.id})}" class="button-cards" onclick="return confirm('Tem certeza que deseja apagar este produto?')">
+              <button style="background-color: rgba(255, 0, 0, 0.493);"> Excluir 🗑️ </button></a>
         </div>
      
     </div>

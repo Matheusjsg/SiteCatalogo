@@ -31,7 +31,7 @@ body {
 }
 
 .menu a:hover {
-  background-color: #cc0000a4;
+  background-color: rgb(0, 0, 255);
   color: #ffffff;
 }
 
@@ -74,15 +74,13 @@ nav a:hover {
 
 /* Hero */
 .hero {
-  background-color: #ffffff;
-  color: white;
+  background-color: #e7f1fd;
   text-align: center;
   padding: 20px 20px;
- 
 }
 
-.hero h2, h1{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.hero h2,
+.hero h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: #121212;
@@ -111,15 +109,16 @@ nav a:hover {
   text-align: center;
   transition: transform 0.3s ease;
 }
+
 .card p {
   font-size: 0.9rem;
   color: #ccc;
-  text-align: center;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
+
 
 .logo {
   width: 100%;
@@ -146,8 +145,7 @@ nav a:hover {
 
 .card .carabina {
   height: 50px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 100px 0;
 }
 
 .card .equip {
@@ -163,6 +161,20 @@ nav a:hover {
   margin-bottom: 10px;
 }
 
+
+
+.btn-action {
+  flex: 1;                         /* ambos ocupam a mesma largura */
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+
 .card button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -171,113 +183,97 @@ nav a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card button:hover {
   background-color: #dda2a211;
 }
 
-
-.carousel-control-prev,
-.carousel-control-next {
-background-color: #1e1e1e00;
-
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  margin-top: 5px;
-  padding: 20px 20px;
-  background-color: #92828200;
-  color: rgb(218, 209, 209);
-  border: none;
-   border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
- 
-}
 .button-cards {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
+
 .button-cards a {
-    text-decoration: none;
-    color: #fff;
-    background-color: #3832320c;
-    padding: 5px 5px;
-    border-radius: 5px;
-    font-size: small;
-    transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: #fff;
+  background-color: #3832320c;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-size: small;
+  transition: background-color 0.3s ease;
 }
 
 /* Página individual do produto */
 .produto-detalhe .card {
-    background-color: #2a2a2a;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    text-align: center;
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  text-align: center;
 }
 
 .produto-detalhe img {
-    width: 300px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .produto-detalhe h1 {
-    margin-bottom: 15px;
-    color: #fff;
+  margin-bottom: 15px;
+  color: #fff;
 }
 
 .produto-detalhe p {
-    margin-bottom: 10px;
-    font-size: 2rem;
-    color: #ddd;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #ddd;
 }
 
 .produto-detalhe .preco {
-    font-size: 1.5rem;
-    color: #00e676;
-    font-weight: bold;
+  font-size: 1.5rem;
+  color: #00e676;
+  font-weight: bold;
 }
-.cart-list img {
-  width: 50px;   /* largura */
-  height: 50px;  /* altura */
-  object-fit: cover; /* corta sem distorcer */
-}
- .cart-section {
-        background-color: #e9ecef;
-        border-radius: 0.5rem;
-        padding: 2rem;
-        margin-top: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .cart-item {
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 0.25rem;
-        padding: 1rem;
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .list-group-item img.cart-item-img {
-        width: 64px;
-        height: 64px;
-        object-fit: cover;
-        border-radius: 0.25rem;
-        margin-right: 1rem;
-    }
-    
-    /* Remove a quebra de linha do Thymeleaf para o JS funcionar */
-    button[data-id] {
-        white-space: nowrap;
-    }
 
+/* Carrinho */
+.cart-list img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.cart-section {
+  background-color: #dda2a211;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-group-item img.cart-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  margin-right: 1rem;
+}
+
+/* Remove a quebra de linha do Thymeleaf para o JS funcionar */
+button[data-id] {
+  white-space: nowrap;
+}
 
 /* Rodapé */
 footer {
