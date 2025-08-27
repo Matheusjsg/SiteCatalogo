@@ -1,5 +1,6 @@
 package br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Column;
@@ -32,8 +33,8 @@ public class Produto {
     @Column(name = "descricaoCompleta", columnDefinition = "TEXT")
     private String descricaoCompleta;
 
-    @Column(name = "preco")
-    private double preco;
+    @Column(name = "preco", precision = 10, scale = 2)
+    private BigDecimal preco;
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImagemProduto> imagens = new ArrayList<>();
@@ -45,7 +46,7 @@ public class Produto {
         private Categoria categoria;
 
     // Construtor
-    public Produto(String nome, String descricaolink, String descricaoCompleta, double preco, Categoria categoria) {
+    public Produto(String nome, String descricaolink, String descricaoCompleta, BigDecimal preco, Categoria categoria) {
         this.nome = nome;
         this.descricaolink = descricaolink;
         this.descricaoCompleta = descricaoCompleta;
@@ -84,11 +85,11 @@ public class Produto {
         this.descricaoCompleta = descricao;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

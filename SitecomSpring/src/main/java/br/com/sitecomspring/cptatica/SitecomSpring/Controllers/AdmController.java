@@ -12,6 +12,7 @@ import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Model.Produto;
 import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.CategoriaRepository;
 import br.com.sitecomspring.cptatica.SitecomSpring.infrastructure.Repository.ProdutoRepository;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -61,7 +62,7 @@ public class AdmController {
 public String salvarProduto(@RequestParam String nome, 
                             @RequestParam String descricaolink, 
                             @RequestParam String descricaoCompleta, 
-                            @RequestParam double preco, 
+                            @RequestParam BigDecimal preco, 
                             @RequestParam("imagem") MultipartFile[] imagem,
                             @RequestParam Long categoriaId) {
 
@@ -124,7 +125,7 @@ public String editarProduto(@PathVariable Long id,
                             @RequestParam String nome, 
                             @RequestParam String descricaolink, 
                             @RequestParam String descricaoCompleta, 
-                            @RequestParam double preco, 
+                            @RequestParam BigDecimal preco, 
                             @RequestParam(value = "imagem", required = false) MultipartFile[] imagem,
                             @RequestParam Long categoriaId) {
 
